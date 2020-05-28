@@ -1,0 +1,18 @@
+{
+    "name": "confluent-cloud-to-local",
+        "config": {
+          "connector.class":"io.confluent.connect.replicator.ReplicatorSourceConnector",
+          "key.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+          "value.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+          "src.kafka.bootstrap.servers": "{{ BOOTSTRAP SERVERS }}",
+	  "src.kafka.security.protocol": "SASL_SSL",
+          "src.kafka.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule   required username=\"{{ API KEY  }}\"   password=\"{{ API SECRET }}\";",
+          "src.kafka.ssl.endpoint.identification.algorithm": "https",
+          "src.kafka.sasl.mechanism": "PLAIN",
+	  "dest.topic.replication.factor": 2,
+	  "topic.min.insync.replicas": 2,
+          "topic.regex": ".*",
+          "topic.rename.format": "${topic}.replica"
+	}
+}
+

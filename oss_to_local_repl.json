@@ -1,0 +1,14 @@
+{
+    "name": "confluent-cloud-to-local",
+        "config": {
+          "connector.class":"io.confluent.connect.replicator.ReplicatorSourceConnector",
+          "key.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+          "value.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+          "src.kafka.bootstrap.servers": "{{ BOOTSTRAP SERVERS HERE }}",
+	  "dest.topic.replication.factor": 2,
+	  "topic.min.insync.replicas": 2,
+          "topic.regex": ".*",
+          "topic.rename.format": "${topic}.replica"
+	}
+}
+
